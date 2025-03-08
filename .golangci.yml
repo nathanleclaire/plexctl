@@ -1,0 +1,63 @@
+run:
+  timeout: 5m
+  modules-download-mode: readonly
+  allow-parallel-runners: true
+  go: "1.23"
+
+linters:
+  enable:
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - gocritic
+    - goconst
+    - unparam
+    - stylecheck
+    - testifylint
+    - wastedassign
+    - gosec
+    - exhaustive
+    - contextcheck
+    - paralleltest
+    - perfsprint
+    - nonamedreturns
+    - nilerr
+    - whitespace
+    - asasalint
+    - errorlint
+    - mnd
+    - errname
+    - funlen
+    - cyclop
+    - nestif
+    - protogetter
+    - gofmt
+    - goimports
+    - misspell
+    - bodyclose
+
+linters-settings:
+  gofmt:
+    simplify: true
+  goimports:
+    local-prefixes: github.com/nathanleclaire/qrgpt
+  revive:
+    rules:
+      - name: exported
+        severity: error
+        disabled: false
+  funlen:
+    lines: 60
+    statements: 40
+  nestif:
+    min-complexity: 3
+  cyclop:
+    max-complexity: 10
+
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0
