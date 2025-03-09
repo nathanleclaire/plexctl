@@ -1,6 +1,6 @@
 # plexctl
 
-A command-line interface for interacting with Perplexity AI.
+A no-frills, Go-based CLI for the Perplexity API.
 
 ## Installation
 
