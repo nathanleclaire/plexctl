@@ -26,7 +26,8 @@ plexctl --token=your-token-here [command]
 
 ### Get a Completion
 
-Generate a quick response to any query:
+Generate a quick response to any query with `plexctl get`. Output will be streamed
+back to the terminal smoothly.
 
 ```bash
 $ plexctl get "Write the most San Francisco sentence ever"
