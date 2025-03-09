@@ -16,6 +16,7 @@ import (
 	"text/tabwriter"
 	"time"
 
+	"github.com/briandowns/spinner"
 	"github.com/btcsuite/btcutil/base58"
 	"github.com/r3labs/sse/v2"
 	"github.com/spf13/cobra"
@@ -34,6 +35,8 @@ const (
 	smoothPrintTickerInterval = 3 * time.Millisecond
 	smoothPrintBufferSize     = 1024
 	tabwriterPadding          = 2
+	spinnerInterval           = 50 * time.Millisecond
+	plexSpinnerIdx            = 11
 )
 
 type ChatCompletionRequest struct {
@@ -454,6 +457,10 @@ func doCompletionRequest(
 	th *Thread,
 	maxTokens int,
 ) (*http.Response, error) {
+	s := spinner.New(spinner.CharSets[plexSpinnerIdx], spinnerInterval)
+	s.Start()
+	defer s.Stop()
+
 	reqBody := ChatCompletionRequest{
 		Model:    model,
 		Messages: th.Messages,
